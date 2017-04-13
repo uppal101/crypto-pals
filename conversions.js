@@ -11,7 +11,7 @@ function produceFixedXOR(str1, str2) {
   let buffer2 = new Buffer(str2, 'hex');
 
   let XORCombo = buffer1.map((byte, index) => byte ^ buffer2[index]);
-  console.log(XORCombo.toString())
+  // console.log(XORCombo.toString())
   return XORCombo.toString('hex');
 }
 
@@ -21,3 +21,19 @@ let fixedXORSolutionString = '746865206b696420646f6e277420706c6179';
 console.assert(produceFixedXOR(hexString1, hexString2) === fixedXORSolutionString);
 
 module.exports = convertHexTo64;
+
+const chars = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ '.split('');
+const charCodes = chars.map((char) => char.charCodeAt()) // array of charCodes from 90 to 122 plus 32, missing some too
+
+function singleByteXOR(str, charCode) {
+}
+
+function produceCharCodeOfLength(charCode, length) {
+  let array = [];
+  for (let i = 0; i <= length; i++) {
+    array.push(charCode);
+  }
+
+  let fixedCharCodeString = array.join('');
+  return fixedCharCodeString;
+}
