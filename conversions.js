@@ -25,15 +25,29 @@ module.exports = convertHexTo64;
 const chars = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ '.split('');
 const charCodes = chars.map((char) => char.charCodeAt()) // array of charCodes from 90 to 122 plus 32, missing some too
 
-function singleByteXOR(str, charCode) {
+function singleByteXOR(str, charCodes) {
+  let charCodesOfLength = charCodes.map((charCode) => {
+    return produceCharCodeOfLength(charCode, str.length/2)
+  })
+  //convert str to a buffer
+  let buffer = new Buffer(str, 'hex')
+  //then map over charCodesOfLength
+  let xored = charCodesOfLength.map((charCodeOfLength)  => {
+    //XOR against str
+    return charCodeOfLength ^ buffer;
+  })
+
+    console.log(xored)
 }
 
 function produceCharCodeOfLength(charCode, length) {
   let array = [];
-  for (let i = 0; i <= length; i++) {
+  for (let i = 1; i <= length; i++) {
     array.push(charCode);
   }
 
   let fixedCharCodeString = array.join('');
   return fixedCharCodeString;
 }
+
+singleByteXOR('0aff', charCodes) // bug as it produces same buffer for different hexes
