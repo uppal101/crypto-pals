@@ -39,5 +39,5 @@ function englishPlainTextScorer(text) {
 
 module.exports = englishPlainTextScorer;
 
-// console.log(englishPlainTextScorer('alfkajhdlkajhsflkajsdhfl'))
-// console.log(englishPlainTextScorer('something that is real'))
+console.log(englishPlainTextScorer('alfkajhdlkajhsflkajsdhfl'))
+console.log(englishPlainTextScorer('something that is real'))
